@@ -2,5 +2,21 @@
 	"empty_file": "the file {{file}} is empty",
 	"not_found": "Not Found",
 	"not_valid": "Not valid",
-	"generic": "There was an error: {{err}}"
+	"generic": "There was an error: {{err}}",
+	"Adverts list": "Adverts list",
+	"Listing": "Listing",
+	"Yes": "Yes",
+	"No": "No",
+	"Name": "Name",
+	"Sell": "Sell",
+	"Price": "Price",
+	"Photo": "Photo",
+	"Tags": "Tags",
+	"Examples": "Examples",
+	"All": "All",
+	"Paginated": "Paginated",
+	"Sort by price ascending": "Sort by price ascending",
+	"Sort by price descending": "Sort by price descending",
+	"With mobile tag": "With mobile tag",
+	"Back to home": "Back to home"
 }

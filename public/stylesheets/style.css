@@ -9,4 +9,14 @@ a {
 
 table tr td img {
   max-height: 20px;
+ 
+}
+
+#selecIdioma{
+  
+  font-size: 2em;
+  background-color: lightpink;
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
 }

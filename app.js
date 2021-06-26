@@ -29,9 +29,14 @@ app.use(express.static(path.join(__dirname, 'public')));
 // Global Template variables
 app.locals.title = 'NodePop';
 
+// Setup de i18n
+const i18n = require('./lib/i18nConfigure');
+app.use(i18n.init);
+
 // Web
 app.use('/', require('./routes/index'));
 app.use('/anuncios', require('./routes/anuncios'));
+app.use('/change-locale', require('./routes/change-locale'));
 
 // API v1
 app.post('/apiv1/authenticate', loginController.postJWT);
