@@ -1,10 +1,11 @@
 'use strict';
-
+require('dotenv').config();
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
+const loginController = require('./controllers/loginController');
 
 /* jshint ignore:start */
 const db = require('./lib/connectMongoose');
@@ -33,7 +34,9 @@ app.use('/', require('./routes/index'));
 app.use('/anuncios', require('./routes/anuncios'));
 
 // API v1
+app.post('/apiv1/authenticate', loginController.postJWT);
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
+
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
@@ -43,13 +46,13 @@ app.use(function (req, res, next) {
 });
 
 // error handler
-app.use(function(err, req, res, next) {
-  
+app.use(function (err, req, res, next) {
+
   if (err.array) { // validation error
     err.status = 422;
     const errInfo = err.array({ onlyFirstError: true })[0];
     err.message = isAPI(req) ?
-      { message: 'not valid', errors: err.mapped()}
+      { message: 'not valid', errors: err.mapped() }
       : `not valid - ${errInfo.param} ${errInfo.msg}`;
   }
 
@@ -59,7 +62,7 @@ app.use(function(err, req, res, next) {
 
   // si es un 500 lo pinto en el log
   if (err.status && err.status >= 500) console.error(err);
-  
+
   // si es una petición al API respondo JSON...
   if (isAPI(req)) {
     res.json({ success: false, error: err.message });
