@@ -39,7 +39,7 @@ app.use('/anuncios', require('./routes/anuncios'));
 app.use('/change-locale', require('./routes/change-locale'));
 
 // API v1
-app.post('/apiv1/authenticate', loginController.postJWT);
+app.post('/apiv1/loginJWT', loginController.postJWT);
 app.use('/apiv1/anuncios', require('./routes/apiv1/anuncios'));
 
 

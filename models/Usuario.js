@@ -17,6 +17,7 @@ usuarioSchema.statics.hashPassword = function (passwordEnClaro) {
 
 usuarioSchema.methods.comparePassword = function (passwordEnClaro) {
   return bcrypt.compare(passwordEnClaro, this.password);
+
 }
 /*
 usuarioSchema.methods.enviaEmail = async function (asunto, cuerpo) {

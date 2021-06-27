@@ -25,7 +25,7 @@ anuncioSchema.statics.allowedTags = function () {
  * carga un json de anuncios
  */
 anuncioSchema.statics.cargaJson = async function (fichero) {
-  
+
   // Using a callback function with async/await
   const data = await new Promise((resolve, reject) => {
     // Encodings: https://nodejs.org/api/buffer.html
@@ -56,7 +56,7 @@ anuncioSchema.statics.createRecord = function (nuevo, cb) {
   new Anuncio(nuevo).save(cb);
 };
 
-anuncioSchema.statics.list = async function(filters, startRow, numRows, sortField, includeTotal, cb) {
+anuncioSchema.statics.list = async function (filters, startRow, numRows, sortField, includeTotal, cb) {
 
   const query = Anuncio.find(filters);
   query.sort(sortField);
@@ -73,11 +73,12 @@ anuncioSchema.statics.list = async function(filters, startRow, numRows, sortFiel
 
   // poner ruta base a imagenes
   const ruta = configAnuncios.imagesURLBasePath;
-  result.rows.forEach(r => r.foto = r.foto ? path.join(ruta, r.foto) : null );
+  result.rows.forEach(r => r.foto = r.foto ? path.join(ruta, r.foto) : null);
 
   if (cb) return cb(null, result); // si me dan callback devuelvo los resultados por ahí
   return result; // si no, los devuelvo por la promesa del async (async está en la primera linea de esta función)
 };
+
 
 var Anuncio = mongoose.model('Anuncio', anuncioSchema);
 

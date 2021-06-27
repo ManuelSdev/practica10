@@ -23,13 +23,16 @@ class LoginController {
   async postJWT(req, res, next) {
     try {
       const { email, password } = req.body;
-
+      // console.log(req.body)
       // buscar el usuario en la BD
       const usuario = await Usuario.findOne({ email })
 
       // si no lo encontramos --> error
       // si no coincide la clave --> error
       if (!usuario || !(await usuario.comparePassword(password))) {
+        if (!usuario) {
+          console.log('usuario')
+        }
         if (!(await usuario.comparePassword(password))) {
           console.log('usuario')
         }
